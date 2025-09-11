@@ -1,0 +1,27 @@
+type Consulta {
+    id: ID!
+    pacienteId: ID!
+    medicoId: ID
+    motivo: String
+    dataHora: String
+    status: String
+}
+
+type Query {
+    consultaById(id: ID!): Consulta
+    consultasByPaciente(pacienteId: ID!): [Consulta]
+    consultasFuturas: [Consulta]
+}
+
+input ConsultaInput {
+    pacienteId: ID!
+    medicoId: ID
+    motivo: String
+    dataHora: String
+    status: String
+}
+type Mutation {
+    criarConsulta(input: ConsultaInput): Consulta
+    atualizarConsulta(id: ID!, input: ConsultaInput): Consulta
+
+}
