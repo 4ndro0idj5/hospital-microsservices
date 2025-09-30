@@ -1,0 +1,172 @@
+{
+  "info": {
+    "name": "Agendamento Service - GraphQL (Corrigido)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "agendamento-service-graphql-fixed"
+  },
+  "item": [
+    {
+      "name": "Buscar Consulta por ID",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic {{auth}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"query\": \"query { consultaById(id: 1) { id pacienteId motivo dataHora status } }\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/graphql",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "graphql"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Consultar Consultas por Paciente (Médico/Enfermeiro)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic {{auth}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"query\": \"query { consultasByPaciente(pacienteId: 100) { id motivo dataHora status } }\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/graphql",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "graphql"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Consultar Consultas Futuras (Paciente)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic {{auth}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"query\": \"query { consultasFuturas { id motivo dataHora status } }\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/graphql",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "graphql"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Criar Consulta",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic {{auth}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"query\": \"mutation { criarConsulta(input: { pacienteId: 100, medicoId: 10, motivo: \\\"Dor de cabe\\u00e7a\\\", dataHora: \\\"2025-09-15T09:30:00Z\\\" }) { id pacienteId dataHora status } }\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/graphql",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "graphql"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Atualizar Consulta",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic {{auth}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"query\": \"mutation { atualizarConsulta(id: 1, input: { pacienteId: 100, motivo: \\\"Consulta de retorno\\\", dataHora: \\\"2025-09-20T10:00:00Z\\\" }) { id pacienteId motivo dataHora status } }\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/graphql",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "graphql"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth",
+      "value": "bWVkaWNvOm1lZGljbzEyMw==",
+      "type": "string",
+      "description": "Credenciais em Base64 (usuário:senha). Ex: medico:medico123 -> bWVkaWNvOm1lZGljbzEyMw=="
+    }
+  ]
+}

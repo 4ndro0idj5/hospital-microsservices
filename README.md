@@ -152,7 +152,7 @@ Authorization: Basic <credenciais>
 #### Atualizar consulta
 ```json
 {
-  "query": "mutation { atualizarConsulta(id: 1, input: { motivo: \"Consulta de retorno\", dataHora: \"2025-09-20T10:00:00Z\" }) { id motivo dataHora status } }"
+  "query": "mutation { atualizarConsulta(id: 1, input: { pacienteId: 100, motivo: \"Consulta de retorno\", dataHora: \"2025-09-20T10:00:00Z\" }) { id motivo dataHora status } }"
 }
 ```
 
@@ -192,10 +192,9 @@ docker run -p 8080:8080 --name agendamento-service agendamento-service
 
 ## 🧪 Testes no Postman
 
-1. Acesse `http://localhost:8080/graphql`  
-2. Configure **Basic Auth** com as credenciais (`medico/medico123`, etc.)  
-3. Envie uma Mutation ou Query conforme exemplos acima.  
+Para facilitar os testes, você pode importar a Collection pronta do Postman:
 
+📥 [Baixar Collection Postman](./postman/agendamento_service_graphql_collection.json)
 
 ✍️ Autor: **Anderson Argollo**  
 📌 Pós-Tech FIAP – Arquitetura e Desenvolvimento Java  
